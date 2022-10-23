@@ -65,19 +65,12 @@ CREATE  TABLE  IF NOT EXISTS  OrderDetail(
         CONSTRAINT FOREIGN KEY (orderId) REFERENCES Orders(orderId) ON DELETE  CASCADE  ON UPDATE  CASCADE,
         CONSTRAINT FOREIGN KEY (itemCode) REFERENCES  Item(itemCode) ON DELETE  CASCADE  ON UPDATE  CASCADE
 
-
-
-
-
-
 );
 
 DESC Patient;
 DESC Item;
 DESC orders;
 DESC OrderDetail;
-
-
 
 
 
