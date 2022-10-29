@@ -1,0 +1,15 @@
+
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Ò®¨–
+J	java:S108(")Either remove or fill this block of code.(³òÎÒşÿÿÿÿ8—Íç™Â0
+H
+java:S1168a"+Return an empty collection instead of null.(¥¹ï8Åâ°šÂ0
+j
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(®ßÇşıÿÿÿÿ8‹ëšÂ0
+e
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ÿ²ó
+c
+java:S2095>"HUse try-with-resources or close this "Connection" in a "finally" clause.(®ßÇşıÿÿÿÿ
+q
+java:S2095!"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(±ìş«üÿÿÿÿ8Õıæ™Â0
+q
+java:S2095?"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‘ºÃøÿÿÿÿ8•Ì­™Â0

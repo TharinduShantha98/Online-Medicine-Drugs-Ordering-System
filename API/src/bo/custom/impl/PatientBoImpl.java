@@ -2,6 +2,7 @@ package bo.custom.impl;
 
 import Entity.Patient;
 import bo.custom.PatientBo;
+import contoller.ItemController;
 import contoller.PatientController;
 
 import java.sql.Connection;
@@ -152,5 +153,20 @@ public class PatientBoImpl implements PatientBo {
         }
         connection.close();
         return patientArrayList;
+    }
+
+    @Override
+    public String nextId() throws SQLException {
+        Connection connection = PatientController.dataSource.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT patientId FROM Patient ORDER BY  patientId  DESC LIMIT 1");
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()){
+            int tempId = Integer.parseInt(resultSet.getString(1).split("-")[1]);
+            tempId = tempId +1;
+            return  "P-" + tempId;
+        }
+
+        return "P-100";
     }
 }

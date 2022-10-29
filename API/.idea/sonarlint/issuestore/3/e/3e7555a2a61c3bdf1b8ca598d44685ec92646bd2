@@ -1,0 +1,28 @@
+
+R	java:S125€"<This block of commented-out lines of code should be removed.(“´ ª
+W
+java:S1128"5Remove this unused import 'contoller.ItemController'.(Û¿ÿ¶ıÿÿÿÿ8îÖ¬–Â0
+^
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(”ºåø
+k
+java:S2095…"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(’‘šËúÿÿÿÿ
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(é«Ç‚ùÿÿÿÿ
+^
+java:S2095F"HUse try-with-resources or close this "Connection" in a "finally" clause.(”ºåø
+_
+java:S2095 "HUse try-with-resources or close this "Connection" in a "finally" clause.(”ºåø
+m
+java:S2095¡"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÈîÜî8±Òü•Â0
+^
+java:S2095c"HUse try-with-resources or close this "Connection" in a "finally" clause.(”ºåø
+e
+java:S2095d"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(õç¡ª
+e
+java:S2095G"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(çÀå
+f
+java:S2095„"HUse try-with-resources or close this "Connection" in a "finally" clause.(”ºåø8è‡ı•Â0
+^
+java:S20951"HUse try-with-resources or close this "Connection" in a "finally" clause.(”ºåø
+e
+java:S20952"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ÂÕ‹Ø

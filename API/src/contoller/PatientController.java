@@ -1,6 +1,7 @@
 package contoller;
 
 import Entity.Patient;
+import bo.BOFactory;
 import bo.custom.PatientBo;
 import bo.custom.impl.PatientBoImpl;
 
@@ -22,7 +23,9 @@ import java.util.ArrayList;
 public class PatientController extends HttpServlet {
 
 
-    PatientBo patientBo = new PatientBoImpl();
+   // PatientBo patientBo = new PatientBoImpl();
+    private  final  PatientBo patientBo = (PatientBo) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.PATIENT);
+
 
     @Resource(name = "java:comp/env/jdbc/pool")
     public  static  DataSource dataSource;
@@ -144,6 +147,23 @@ public class PatientController extends HttpServlet {
                     objectBuilder2.add("status", "200");
                     writer.print(objectBuilder2.build());
                     break;
+
+
+                case "NEXTID":
+                    try {
+                        String nextId = patientBo.nextId();
+
+
+                        objectBuilder.add("data",nextId );
+                        objectBuilder.add("message", "done");
+                        objectBuilder.add("status", "200");
+                        writer.print(objectBuilder.build());
+
+
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+
 
             }
 

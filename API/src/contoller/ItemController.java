@@ -2,6 +2,7 @@ package contoller;
 
 import Entity.Item;
 import Entity.Patient;
+import bo.BOFactory;
 import bo.custom.ItemBo;
 import bo.custom.impl.ItemBoImpl;
 
@@ -24,7 +25,9 @@ import java.util.ArrayList;
 @WebServlet(urlPatterns = "/item")
 public class ItemController extends HttpServlet {
 
-    ItemBo itemBo = new ItemBoImpl();
+    //ItemBo itemBo = new ItemBoImpl();
+
+    private final ItemBo itemBo = (ItemBo) BOFactory.getBoFactory().getBo(BOFactory.BOTypes.ITEM);
 
     @Resource(name = "java:comp/env/jdbc/pool")
     public  static DataSource dataSource;
@@ -39,6 +42,43 @@ public class ItemController extends HttpServlet {
 
         switch (option){
             case "GETALL":
+                JsonArrayBuilder arrayBuilder2 = Json.createArrayBuilder();
+                System.out.println("hellooo");
+                try {
+                    ArrayList<Item> all = itemBo.getAll();
+
+                    for(int i=0; i< all.size(); i++){
+
+                        objectBuilder.add("itemCode", all.get(i).getItemCode());
+                        objectBuilder.add("itemName",all.get(i).getItemName());
+                        objectBuilder.add("brandName",all.get(i).getBrandName());
+                        objectBuilder.add("description",all.get(i).getDescription());
+                        objectBuilder.add("price",all.get(i).getPrice());
+                        objectBuilder.add("drugType",all.get(i).getDrugType());
+                        objectBuilder.add("quantity",all.get(i).getQuantity());
+                        objectBuilder.add("expireDate", String.valueOf(all.get(i).getExpireDate()));
+
+
+                        System.out.println(all.get(i).getItemName());
+                        arrayBuilder2.add(objectBuilder.build());
+
+
+                    }
+
+                    JsonObjectBuilder objectBuilder2  = Json.createObjectBuilder();
+                    objectBuilder2.add("data",arrayBuilder2.build() );
+                    objectBuilder2.add("message", "done");
+                    objectBuilder2.add("status", "200");
+                    writer.print(objectBuilder2.build());
+
+
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+
                 break;
             case "SEARCH":
 
@@ -107,6 +147,27 @@ public class ItemController extends HttpServlet {
 
 
                 break;
+
+            case "NEXTID":
+
+
+                try {
+                    String nextId = itemBo.nextId();
+
+
+                    objectBuilder.add("data",nextId );
+                    objectBuilder.add("message", "done");
+                    objectBuilder.add("status", "200");
+                    writer.print(objectBuilder.build());
+
+
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+
+
+                break;
+
 
         }
 

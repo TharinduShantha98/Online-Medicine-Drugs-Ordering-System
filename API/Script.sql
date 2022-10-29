@@ -56,13 +56,10 @@ CREATE TABLE  IF NOT EXISTS orders(
 
 DROP TABLE  IF  EXISTS OrderDetail;
 CREATE  TABLE  IF NOT EXISTS  OrderDetail(
-
-        orderDetailId VARCHAR (6),
         orderId VARCHAR(6),
         itemCode VARCHAR (6),
         quantity DOUBLE ,
         price DOUBLE ,
-        CONSTRAINT  PRIMARY  KEY (orderDetailId),
         CONSTRAINT FOREIGN KEY (orderId) REFERENCES Orders(orderId) ON DELETE  CASCADE  ON UPDATE  CASCADE,
         CONSTRAINT FOREIGN KEY (itemCode) REFERENCES  Item(itemCode) ON DELETE  CASCADE  ON UPDATE  CASCADE
 

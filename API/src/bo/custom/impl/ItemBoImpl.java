@@ -88,7 +88,32 @@ public class ItemBoImpl implements ItemBo {
 
     @Override
     public ArrayList<Item> getAll() throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<Item> itemArrayList = new ArrayList<>();
+        Connection connection = ItemController.dataSource.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM item ");
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            String itemCode = resultSet.getString(1);
+            String itemName = resultSet.getString(2);
+            String brandName = resultSet.getString(3);
+            String description = resultSet.getString(4);
+            double price =Double.parseDouble(resultSet.getString(5));
+            String drugType = resultSet.getString(6);
+            double quantity = Double.parseDouble(resultSet.getString(7));
+            Date date = Date.valueOf(resultSet.getString(8));
+
+            itemArrayList.add(new Item(itemCode,itemName,brandName,description,price,drugType,quantity,date));
+
+
+
+
+
+        }
+
+
+
+        return itemArrayList;
     }
 
     @Override
@@ -107,5 +132,20 @@ public class ItemBoImpl implements ItemBo {
 
         return stringArrayList;
 
+    }
+
+    @Override
+    public String nextId() throws SQLException {
+        Connection connection = ItemController.dataSource.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT itemCode FROM item ORDER BY  itemCode  DESC LIMIT 1");
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        if(resultSet.next()){
+            int tempId = Integer.parseInt(resultSet.getString(1).split("-")[1]);
+            tempId = tempId +1;
+            return  "I-" + tempId;
+        }
+
+        return "I-100";
     }
 }

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 public interface ItemBo extends Crud<Item, String> {
 
     public ArrayList<String> getAllItemId() throws SQLException;
+    public  String nextId() throws SQLException;
+
 
 
 }
